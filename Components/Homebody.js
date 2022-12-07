@@ -47,7 +47,7 @@ export default function Homebody() {
             </div>
             <div className={styles.aboutThree}>
                 <div className={styles.aboutOneTitle}>
-                    Keep your branches in order by <em>removing</em> tracks you dont vibe with. 
+                    Keep your branches tidy by <em>removing</em> tracks you dont vibe with. 
                     <br></br>
                     <br></br>Don&apos;t worry &mdash; we won&apos;t tell them
                 </div>
