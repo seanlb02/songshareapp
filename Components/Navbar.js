@@ -12,9 +12,9 @@ export default function Navbar(){
             <div className={styles.logo}><Link href="/">[logo]</Link></div>
             <div className={styles.links}>
                 <div className={styles.button}><Link href="/about">About</Link></div>
-                <div className={styles.button}><Link href="/profile">FAQ</Link></div>
+                <div className={styles.button}><Link href="/profile">test profile</Link></div>
                 <div className={styles.button}>
-                    <div className={styles.loginbutton}>Log in</div>
+                    <div className={styles.loginbutton}><Link href="#login">Log in</Link></div>
                 </div>
                 <div className={styles.button}>
                     <div className={styles.GDbutton}>Sign up</div>

@@ -48,7 +48,8 @@ export default function Homebody() {
                 <Image src="/delete.svg" width={700} height={100}/>
                 </div>
             </div>    
-            <header id="login" className={styles.loginHeader}>Get discovering</header>
+            <header id="login" className={styles.loginHeader}>Playlist your life.
+            <br></br>Get discovering today</header>
             <form  className={styles.form} action="/send-data-here" method="post">
                     
                     <input type="text" value='' className={styles.input} name="first" placeholder="Email Address"/>
@@ -79,7 +80,7 @@ const styles = {
     loginHeader: 'text-4xl pl-56',
     Button: 'flex bg-[#a09924] rounded-lg p-1 w-1/2 justify-center ml-2 mt-5 px-5 text-white',
     input: 'rounded-lg m-2 p-2 bg-[#f4f4ee]', 
-    form: 'flex flex-col w-1/3 pt-10 mt-12  ml-56 ', 
+    form: 'flex flex-col w-1/3 pt-10 mt-10  ml-56 mb-36', 
     loginBox: 'flex w-2/3',
     forgot: 'text-blue-600 text-sm ml-2 mt-6 mb-12 xs:mb-0', 
 
