@@ -1,3 +1,3 @@
 ## PWA for sharing music 
 
-[Preview]( https://chatshare.vercel.app)
+[Preview](https://chatshare-seanlb02.vercel.app/)
