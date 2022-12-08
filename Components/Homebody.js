@@ -48,7 +48,7 @@ export default function Homebody() {
                 <Image src="/delete.svg" width={700} height={100}/>
                 </div>
             </div>    
-            <header className={styles.loginHeader}>Get discovering</header>
+            <header id="login" className={styles.loginHeader}>Get discovering</header>
             <form  className={styles.form} action="/send-data-here" method="post">
                     
                     <input type="text" value='' className={styles.input} name="first" placeholder="Email Address"/>

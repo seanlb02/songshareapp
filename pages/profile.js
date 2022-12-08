@@ -8,7 +8,7 @@ import Navbar from '../Components/Navbar'
 export default function profile() {
   return (
     <div className={styles.pageContainer}>
-      <section className={styles.header}>
+      <Navbar/>
           
       </section>
     </div>
@@ -17,5 +17,5 @@ export default function profile() {
 
 const styles = {
     pageContainer: "h-[100vh]",
-    header: "h-30vw bg-red-600"
+
 }
