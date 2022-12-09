@@ -52,8 +52,8 @@ export default function Homebody() {
             <br></br>Get discovering today</header>
             <form  className={styles.form} action="/send-data-here" method="post">
                     
-                    <input type="text" value='' className={styles.input} name="first" placeholder="Email Address"/>
-                    <input type="text" value='' className={styles.input} name="last" placeholder="Password"/>
+                    <input type="text" value='' className={styles.input} name="email" placeholder="Email Address"/>
+                    <input type="text" value='' className={styles.input} name="password" placeholder="Password"/>
                     <div className={styles.Button}><button type="submit">Log In</button></div>
                     <div className={styles.forgot}><Link  href="/forgotpassword">Forgot your password?</Link></div>
 
