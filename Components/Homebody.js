@@ -21,20 +21,20 @@ let [email, setEmail] = useState("")
 
 // handler function to set user name and pass to whatevers submited 
 
-const inputPassword = function(){
-    setPassword(password == `{password}`)
-}
+// const inputPassword = function(){
+//     setPassword(password == `{password}`)
+// }
 
-const inputUsername = function(){
-    setUsername(email == `{email}`)
-}
+// const inputUsername = function(){
+//     setUsername(email == `{email}`)
+// }
 
 
 
 const [token, setToken] = useState("")
-let AuthBody = { email: "jerryj@gmail.com", password: "password666" };
+let AuthBody = { email: `${email}`, password: `${password}` };
 
-
+// { email: {"jerryj@gmail.com"}, password: "password666" };
     
 async function getToken() {
     const res = await
@@ -77,7 +77,7 @@ useEffect(() => {
     <div className={styles.pageContainer}>
         <div className={styles.HeroContainer}>
             <div className={styles.HeroText}>
-                <div className={styles.title} onClick={getToken}>Trade tracks with the world</div>
+                <div className={styles.title}>Trade tracks with the world</div>
                 <div className={styles.text}>Curate your own [AppName] profile and get sent music reccomendations from the world&apos;s best tastemakers
                  &mdash; your friends included</div>
                  
@@ -115,16 +115,18 @@ useEffect(() => {
                 <Image src="/delete.svg" width={700} height={100}/>
                 </div>
             </div>    
-            <header id="login" className={styles.loginHeader}>Playlist your life.
+            <header id="login"  className={styles.loginHeader}>Playlist your life.
             <br></br>Get discovering today</header>
             <form  className={styles.form}>
                     
-                    <input type="text"  className={styles.input} name="email"  placeholder="Email Address"/>
-                    <input type="text" className={styles.input} name="password"  placeholder="Password" />
-                    <div className={styles.Button}><button>Log In</button></div>
+                    <input type="text" className={styles.input} name="email"  placeholder="Email Address" onChange={evt => setEmail(evt.target.value)}/>
+                    <input type="text" className={styles.input} name="password"  placeholder="Password" onChange={evt => setPassword(evt.target.value)}/>
+            </form>          
+            <div className={styles.formButtons}>
+                    <div onClick={getToken} className={styles.Button}><button>Log In</button></div>
                     <div className={styles.forgot}><Link  href="/forgotpassword">Forgot your password?</Link></div>
-
-            </form>   
+            </div>
+             
     </div>
     )
 }
@@ -147,8 +149,8 @@ const styles = {
     loginHeader: 'text-4xl pl-56',
     Button: 'flex bg-[#a09924] rounded-lg p-1 w-1/2 justify-center ml-2 mt-5 px-5 text-white',
     input: 'rounded-lg m-2 p-2 bg-[#f4f4ee]', 
-    form: 'flex flex-col w-1/3 pt-10 mt-10  ml-56 mb-36', 
+    form: 'flex flex-col w-1/3 pt-10 mt-10  ml-56', 
     loginBox: 'flex w-2/3',
     forgot: 'text-blue-600 text-sm ml-2 mt-6 mb-12 xs:mb-0', 
-
+    formButtons: 'flex flex-col w-1/3 pt-5 mb-36 ml-56', 
 }
