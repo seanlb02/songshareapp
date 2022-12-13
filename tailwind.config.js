@@ -15,14 +15,16 @@ module.exports = {
       'xs': '350px',
       'sm': '640px',
       'md': '750px',
-      'lg': '1100px',
+      'lg': '850px',
+      'xlg': '1100px',
     },
     extend: {
       screens: {
         'xs': '350px',
         'sm': '640px',
         'md': '750px',
-        'lg': '1100px',
+        'lg': '850px',
+        'xlg': '1100px',
       },
       backgroundImage: {
       },

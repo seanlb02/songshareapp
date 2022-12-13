@@ -93,7 +93,7 @@ useEffect(() => {
                         New music you add to your profile's <em>track tree</em> gets automatically distributed to your followers as <u>branches</u>
                 </div>
                 <div className={styles.rightImage}>
-                <Image src="/upload.svg" width={700} height={100}/>
+                <Image src="/upload.svg" width={400} height={100}/>
                 </div>
             
             </div>
@@ -102,7 +102,7 @@ useEffect(() => {
                     Branches sent to you by the people you follow are stored like a messages thread. Consider these threads as personalised playlists. 
                 </div>
                 <div className={styles.rightImage}>
-                <Image src="/messages.svg" width={700} height={100}/>
+                <Image src="/messages.svg" width={400} height={100}/>
                 </div>
             </div>
             <div className={styles.aboutThree}>
@@ -112,7 +112,7 @@ useEffect(() => {
                     <br></br>Don&apos;t worry &mdash; we won&apos;t tell them
                 </div>
                 <div className={styles.rightImage}>
-                <Image src="/delete.svg" width={700} height={100}/>
+                <Image src="/delete.svg" width={400} height={100}/>
                 </div>
             </div>    
             <header id="login"  className={styles.loginHeader}>Playlist your life.
@@ -138,13 +138,13 @@ const styles = {
     title: 'font-roboto md:pr-0 font-bold xs:text-3xl md:text-4xl md:px-0 xs:pt-12 md:pt-16 md:text-center lg:text-5xl mb-10 lg:pl-4', 
     text: 'text-l md:pr-0 text-center lg:pl-0 mx-96',
 
-    aboutOne: 'flex flex-row h-[50vw] w-[100vw] mb-36 bg-blue-300 py-12 text-white',
-    aboutOneTitle: 'w-1/2 font-roboto  xs:text-2xl md:text-2xl md:px-24 xs:pt-12 md:pt-16 md:text-center lg:text3xl mb-10 lg:pt-44 lg:text-left',
-    rightImage: 'flex w-1/2',
-    aboutTwo: 'flex flex-row-reverse  h-[50vw] w-[100vw] mb-36 py-12 bg-yellow-200',
-    aboutTwoTitle: 'w-1/2 font-roboto  xs:text-2xl md:text-2xl md:px-24 xs:pt-12 md:pt-16 md:text-center lg:text3xl mb-10 lg:pt-44 lg:text-left ',
-    messageFeedImage: 'flex w-1/2 ',
-    aboutThree: 'flex flex-row h-[50vw] w-[100vw] mb-36 bg-red-300 py-12',
+    aboutOne: 'lg:flex lg:flex-row h-[contain] w-[100vw] mb-36 bg-blue-300 py-12 text-white sm:flex sm:flex-col',
+    aboutOneTitle: 'lg:w-1/2 sm:w-full font-roboto  xs:text-2xl md:text-2xl md:px-24 xs:pt-12 md:pt-16 md:text-center lg:text3xl mb-10 lg:pt-44 lg:text-left',
+    rightImage: 'flex lg:w-1/2 sm:w-full justify-center sm:min-h-550px sm:min-w-400px',
+    aboutTwo: 'lg:flex lg:flex-row-reverse sm:justify-center items-center h-[contain] w-[100vw] mb-36 py-12 bg-yellow-200 sm:flex sm:flex-col',
+    aboutTwoTitle: 'lg:w-1/2 sm:w-full font-roboto  xs:text-2xl md:text-2xl md:px-24 xs:pt-12 md:pt-16 md:text-center lg:text3xl mb-10 lg:pt-44 lg:text-left ',
+    messageFeedImage: 'flex w-1/2 pl-12',
+    aboutThree: 'lg:flex lg:flex-row h-[contain] w-[100vw] mb-36 bg-red-300 py-12 sm:flex sm:flex-col',
 
     loginHeader: 'text-4xl pl-56',
     Button: 'flex bg-[#a09924] rounded-lg p-1 w-1/2 justify-center ml-2 mt-5 px-5 text-white',
