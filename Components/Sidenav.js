@@ -12,7 +12,7 @@ export default function Sidenav() {
     <div className={styles.sideContainer}>
         <section className={styles.navLinkContainer}>
             <Sidenavitem title="Profile" src="/avatar.png" width={27} height={20} link="/profile" />
-            <Sidenavitem title="Search" src="/personsearch.png" width={27} height={20} link=""/>
+            <Sidenavitem title="Search" src="/personsearch.png" width={27} height={20} link="/search"/>
             <Sidenavitem title="Settings" src="/settingicon.png" width={27} height={20} link="/settings"/>
             <Sidenavitem title="Help" src="/helpicon.png" width={25} height={18} link=""/>
             <div className={styles.spacer}></div>
