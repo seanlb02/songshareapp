@@ -56,7 +56,7 @@ async function getToken() {
         
     }
 
-    // add user token to localStorage and push them to their profile
+// add user token to localStorage and push them to their profile
 useEffect(() => {
     if(token != ""){
         localStorage.setItem('tokenKey', JSON.stringify(token))
@@ -64,8 +64,13 @@ useEffect(() => {
     }
 }, [token])
 
+// When on the app's homepage, redirect all 'logged in' users with a token to their profile
+useEffect(() => {
+    if(localStorage.getItem('tokenKey')){
+        router.push("/profile")
+    }
+}, [token])
 
-    
 
 
   return (
