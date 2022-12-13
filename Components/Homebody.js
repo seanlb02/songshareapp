@@ -1,16 +1,78 @@
-import React from'react';
+import React, {useState, useEffect} from'react';
 import ReactDOM from'react-dom';
 import Image from 'next/image';
 import Link from 'next/link';
 import messages from '../public/messages.svg'
+import { useRouter } from 'next/router';
+
+
+
 
 
 export default function Homebody() {
+
+
+const router = useRouter();
+
+
+
+let [password, setPassword] = useState("")
+let [email, setEmail] = useState("")
+
+// handler function to set user name and pass to whatevers submited 
+
+const inputPassword = function(){
+    setPassword(password == `{password}`)
+}
+
+const inputUsername = function(){
+    setUsername(email == `{email}`)
+}
+
+
+
+const [token, setToken] = useState("")
+let AuthBody = { email: "jerryj@gmail.com", password: "password666" };
+
+
+    
+async function getToken() {
+    const res = await
+        fetch('http://127.0.0.1:8000/auth/login/', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(AuthBody),
+        })
+        .then((res) => res.json())
+        .then((data) => {
+        setToken(data.token)
+        // router.push("/profile"); 
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+        
+    }
+
+    // add user token to localStorage and push them to their profile
+useEffect(() => {
+    if(token != ""){
+        localStorage.setItem('tokenKey', JSON.stringify(token))
+        router.push("/profile")
+    }
+}, [token])
+
+
+    
+
+
   return (
     <div className={styles.pageContainer}>
         <div className={styles.HeroContainer}>
             <div className={styles.HeroText}>
-                <div className={styles.title}>Trade tracks with the world</div>
+                <div className={styles.title} onClick={getToken}>Trade tracks with the world</div>
                 <div className={styles.text}>Curate your own [AppName] profile and get sent music reccomendations from the world&apos;s best tastemakers
                  &mdash; your friends included</div>
                  
@@ -50,11 +112,11 @@ export default function Homebody() {
             </div>    
             <header id="login" className={styles.loginHeader}>Playlist your life.
             <br></br>Get discovering today</header>
-            <form  className={styles.form} action="/send-data-here" method="post">
+            <form  className={styles.form}>
                     
-                    <input type="text" value='' className={styles.input} name="email" placeholder="Email Address"/>
-                    <input type="text" value='' className={styles.input} name="password" placeholder="Password"/>
-                    <div className={styles.Button}><button type="submit">Log In</button></div>
+                    <input type="text"  className={styles.input} name="email"  placeholder="Email Address"/>
+                    <input type="text" className={styles.input} name="password"  placeholder="Password" />
+                    <div className={styles.Button}><button>Log In</button></div>
                     <div className={styles.forgot}><Link  href="/forgotpassword">Forgot your password?</Link></div>
 
             </form>   

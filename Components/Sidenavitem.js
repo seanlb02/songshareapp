@@ -4,7 +4,7 @@ import Image from "next/image";
 
 
 
-export default function Sidenavitem({title, src, link}) {
+export default function Sidenavitem({title, src, link, onClick}) {
   return (
     <>
             <Link href={link}>

@@ -28,11 +28,11 @@ const styles = {
   profileContainer: "overflow-y-scroll h-screen w-[70vw] flex flex-col ",
     headerContainer: "h-contain  w-100%  border-b-2 border-slate-200",
     treePreview: "h-full w-full bg-black justify-center border ",
-    profilePic: "rounded-full ml-24",
-    infoContainer: "h-contain flex gap-5 items-center content-center mt-12",
+    profilePic: "rounded-full",
+    infoContainer: "w-4/5 ml-auto h-contain flex gap-5 items-center content-center mt-12",
     userName: "text-3xl",
 
-    bioContainer: "flex flex-col h-contain py-6 pl-28 flex gap-2 ",
+    bioContainer: "w-4/5 ml-auto flex flex-col h-contain py-6 flex gap-2 ",
     Location: "text-l"
 
 
