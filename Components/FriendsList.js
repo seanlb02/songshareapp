@@ -15,11 +15,12 @@ export default function FriendsList() {
 const [followers, setFollowers] = useState()
 let followerArray = []
 
-async function getFollowers() {
+const [username, setUsername] = useState()
+
+function getFollowerIds(getFollowerNames = () => {}) {
 
       var token = (JSON.parse(localStorage.getItem("tokenKey").replaceAll("", '')))
-      console.log(token)
-      await fetch('http://127.0.0.1:8000/connections/following/', {
+       fetch('http://127.0.0.1:8000/connections/following/', {
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',
@@ -32,13 +33,39 @@ async function getFollowers() {
       .then(() => setFollowers(followerArray))
       .catch((error) => {
         console.error('Error:', error);})
+      
+      getFollowerNames();
+      
+     }
+
+     const getFollowerNames = function () {
+      var token = (JSON.parse(localStorage.getItem("tokenKey").replaceAll("", '')))
+       console.log(followers)
+       followerArray.map(follower => fetch(`http://127.0.0.1:8000/users/${follower}/`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+            },
+          
+        })
+        .then(res => res.json())
+        .then((data => {console.log(data)}))
+
+        // .then((data =>  data.map(item => setUsername(item.name))))
+      )
      }
 
   useEffect(() => {
   
+    // (async function () {
+     getFollowerIds(getFollowerNames);
+
+
+;
+    // })();
     
-    getFollowers()
-    
+    // getFollowerIds().then(console.log(followers))
       
     }, [])
 
@@ -50,11 +77,10 @@ async function getFollowers() {
             <input type="text"  className={styles.searchInput} name="Friendsearch" placeholder="Search..."/>
             <button type="submit" className={styles.searchButton}><Image src="/searchIcon.png" width={25} height={25}></Image></button>
         </div>
-        <div>{followerArray}</div>
-        <div>i</div>
+       
         {followers && followers.map(follower => (<FriendListItem UserName={follower}/>))}
       
-        
+        <FriendListItem UserName={username}/>
          
     
     </div>

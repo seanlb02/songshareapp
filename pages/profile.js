@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 
-import Profile from '../Components/Profile.js'
+import Account from '../Components/Account.js'
 import FriendsList from '../Components/FriendsList.js'
 import Sidenav from '../Components/Sidenav.js'
 
@@ -11,7 +11,7 @@ export default function profile() {
     <>
       <div className={styles.pageContainer}>
       <Sidenav/>
-      <Profile/>
+      <Account/>
       <FriendsList/>
       </div>
     </>
