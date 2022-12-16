@@ -7,8 +7,12 @@ import { useState, useEffect } from "react";
 
 export default function Account() {
 
+const [userdata, setUserdata] = useState ([])
 
 const [username, setUsername] = useState()
+const [bio, setBio] = useState()
+const [city, setCity] = useState()
+const [country, setCountry] = useState()
 
 async function getAccount() {
 
@@ -23,7 +27,9 @@ async function getAccount() {
     
   })
   .then(res => res.json())
-  .then((data =>  data.map(item => setUsername(item.name))))
+  .then((data =>  data.map(item => setUserdata(item))))
+
+  .then(console.log(username))
 
 
 }
@@ -47,12 +53,12 @@ getAccount()
     <section className={styles.headerContainer}>
           <div className={styles.infoContainer}>
             <img className={styles.profilePic} src="https://i.pravatar.cc/300" height={100} width={100}/>
-            <div className={styles.userName}>{username}</div>
+            <div className={styles.userName}>{userdata.username}</div>
             <Image src="/addIcon.png" width={50} height={50}></Image>
           </div>
           <div className={styles.bioContainer}>
-            <div className={styles.Location}>City, Country</div>
-            <div className={styles.Location}>Short user tagline goes here or external link</div>
+            <div className={styles.Location}>{userdata.city}, {userdata.country}</div>
+            <div className={styles.bio}>{userdata.bio}</div>
           </div>
     </section>
     <section className={styles.treePreview}>
@@ -72,7 +78,8 @@ const styles = {
     userName: "text-3xl",
 
     bioContainer: "w-4/5 ml-auto flex flex-col h-contain py-6 flex gap-2 ",
-    Location: "text-l"
+    Location: "text-l text-slate-600",
+    bio: "text-l"
 
 
 }
