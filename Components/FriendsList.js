@@ -3,9 +3,12 @@ import Link from 'next/link'
 import Image from "next/image";
 import FriendListItem from "./FriendListItem";
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 
 
 export default function FriendsList() {
+
+  const router = useRouter();
 
 
 // resolve following list as array of user IDs 
@@ -105,8 +108,8 @@ const [isLoaded, setIsLoaded] = useState(false)
             <button type="submit" className={styles.searchButton}><Image src="/searchIcon.png" width={25} height={25}></Image></button>
         </div>
        
-        {isLoaded == true ? username && username.map(user => (<FriendListItem key={user} UserName={user}/>)) : <div>loading</div>}
-        {followers !=undefined ? followers.map(user => (<FriendListItem key={user} UserName={user}/>)) : <div>loading</div>}
+        {/* {isLoaded == true ? username && username.map(user => (<FriendListItem key={user} UserName={user} link = {`/user/${user}`}/>)) : <div>loading</div>} */}
+        {followers !=undefined ? followers.map(user => (<FriendListItem key={user} UserName={user} link={`/user/${user}`}/>)) : <div>loading</div>}
     </div>
   )
 }
