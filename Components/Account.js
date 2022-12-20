@@ -1,11 +1,14 @@
 import React from "react";
 import Link from 'next/link'
 import Image from "next/image";
+import Router, { useRouter } from "next/router";
 
 import { useState, useEffect } from "react";
 
 
 export default function Account() {
+
+const router = useRouter();
 
 const [userdata, setUserdata] = useState ([])
 
@@ -29,12 +32,10 @@ async function getAccount() {
   .then(res => res.json())
   .then((data =>  data.map(item => setUserdata(item))))
 
-  .then(console.log(username))
+  .then(console.log(router.query))
 
 
 }
-
-  
 
 
 

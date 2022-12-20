@@ -7,33 +7,43 @@ import { useRouter } from 'next/router';
 
 export default function UserProfile({name}) {
 
-const router = useRouter;
+
 
 const [userdata, setUserdata] = useState ([])
-const [username, setUsername] = useState()
-const [bio, setBio] = useState()
-const [city, setCity] = useState()
-const [country, setCountry] = useState()
+const userFeederArray = []
 
+// const [username, setUsername] = useState()
+// const [bio, setBio] = useState()
+// const [city, setCity] = useState()
+// const [country, setCountry] = useState()
+  const router = useRouter()
 async function getAccount() {
 
   var token = (JSON.parse(localStorage.getItem("tokenKey").replaceAll("", '')))
+    const res = await fetch(`http://127.0.0.1:8000/users/${router.query.user}/`, {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+        },
+      
+    })
+    .then(res => res.json())
+    .then((data =>  userFeederArray.push(data)))
+    .then((data =>  userFeederArray.map(item => setUserdata(item))))
 
-  const res = await fetch(`http://127.0.0.1:8000/users/${username}/`, {
-  method: 'GET',
-  headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
-      },
-    
-  })
-  .then(res => res.json())
-  .then((data =>  data.map(item => setUserdata(item))))
-
-  .then(console.log(username))
-
+    .then(console.log(router.query.user))
 
 }
+
+// const router = useRouter();
+// useEffect(()=>{
+//     if(!router.isReady) return;
+
+//     const { user } = router.query
+//     getAccount()
+
+// }, [router.isReady]);
 
   
 useEffect(() => {
@@ -55,7 +65,7 @@ getAccount()
             <Image src="/addIcon.png" width={50} height={50}></Image>
           </div>
           <div className={styles.bioContainer}>
-            <div className={styles.Location}>this is to be dynamic profile</div>
+            <div className={styles.Location}>{userdata.city}, {userdata.country}</div>
             <div className={styles.bio}>{userdata.bio}</div>
           </div>
     </section>

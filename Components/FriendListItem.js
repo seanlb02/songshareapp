@@ -14,10 +14,11 @@ const router = useRouter;
 
 
   return (
-    <div className={styles.container} href={link} onClick={router.push(link)}>
+    <Link  href={link}><div className={styles.container}>
         <img className={styles.profilePic} src="https://i.pravatar.cc/300" height={25} width={25}/>
         <div className={styles.userName}>{UserName}</div>
     </div>
+    </Link>
   )
 }
 
