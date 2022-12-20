@@ -48,11 +48,11 @@ async function getAccount() {
   
 useEffect(() => {
 
-
+  if(!router.isReady) return;
 getAccount()
 
   
-}, [])
+}, [router.isReady])
 
 
 
