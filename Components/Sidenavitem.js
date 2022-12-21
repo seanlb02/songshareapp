@@ -18,9 +18,9 @@ export default function Sidenavitem({title, src, link, onClick}) {
 }
 
 const styles = {
-    navLinkContainer: "mt-10 ",
-    itemClickable: "flex w-full ml-2 justify-start gap-4 text-l py-3 items-center",
-    navIcon: "flex ml-auto mr-5 flex-end h-25 w-25"
+    navLinkContainer: "mt-16 ",
+    itemClickable: "flex ml-10 w-full ml-2 justify-start gap-2 text-l py-3 items-center",
+    navIcon: "flex ml-auto mr-16  h-25 w-25"
 
 
 }

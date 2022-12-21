@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-
+import { useEffect, useState} from 'react'
 
 import UserProfile from '../../Components/UserProfile.js'
 import FriendsList from '../../Components/FriendsList.js'
@@ -39,7 +39,12 @@ import Sidenav from '../../Components/Sidenav.js'
 
 // }
 
+
+
+
 export default function profile() {
+
+
   return (
     <>
       <div className={styles.pageContainer}>

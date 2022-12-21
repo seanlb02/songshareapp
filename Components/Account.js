@@ -70,7 +70,7 @@ getAccount()
 }
 
 const styles = {
-  profileContainer: "overflow-y-scroll h-screen w-[70vw] flex flex-col ",
+  profileContainer: "overflow-y-scroll h-screen w-[60vw] flex flex-col ",
     headerContainer: "h-contain  w-100%  border-b-2 border-slate-200",
     treePreview: " flex h-screen w-full justify-center align-center items-center border-t-2 ",
     treeText: "text-slate-500",

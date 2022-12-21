@@ -109,14 +109,14 @@ useEffect(() => {
                 <div className={styles.aboutOneTitle}>
                     Keep your branches tidy by <em>removing</em> tracks you dont vibe with. 
                     <br></br>
-                    <br></br>Don&apos;t worry &mdash; we won&apos;t tell them
+                    <br></br>Don&apos;t worry &mdash; they&apos;ll never know
                 </div>
                 <div className={styles.rightImage}>
                 <Image src="/delete.svg" width={400} height={100}/>
                 </div>
             </div>    
             <header id="login"  className={styles.loginHeader}>Playlist your life.
-            <br></br>Get discovering today</header>
+            <br></br>Sign in and get discovering</header>
             <form  className={styles.form}>
                     
                     <input type="text" className={styles.input} name="email"  placeholder="Email Address" onChange={evt => setEmail(evt.target.value)}/>
@@ -138,10 +138,10 @@ const styles = {
     title: 'font-roboto md:pr-0 font-bold xs:text-3xl md:text-4xl md:px-0 xs:pt-12 md:pt-16 md:text-center lg:text-5xl mb-10 lg:pl-4', 
     text: 'text-l md:pr-0 text-center lg:pl-0 mx-96',
 
-    aboutOne: 'lg:flex lg:flex-row h-[contain] w-[100vw] mb-36 bg-blue-300 py-12 text-white sm:flex sm:flex-col',
+    aboutOne: 'lg:flex lg:flex-row h-[contain] w-[100vw]  bg-blue-300 py-12 text-white sm:flex sm:flex-col',
     aboutOneTitle: 'lg:w-1/2 sm:w-full font-roboto  xs:text-2xl md:text-2xl md:px-24 xs:pt-12 md:pt-16 md:text-center lg:text3xl mb-10 lg:pt-44 lg:text-left',
     rightImage: 'flex lg:w-1/2 sm:w-full justify-center sm:min-h-550px sm:min-w-400px',
-    aboutTwo: 'lg:flex lg:flex-row-reverse sm:justify-center items-center h-[contain] w-[100vw] mb-36 py-12 bg-yellow-200 sm:flex sm:flex-col',
+    aboutTwo: 'lg:flex lg:flex-row-reverse sm:justify-center items-center h-[contain] w-[100vw]  py-12 bg-yellow-200 sm:flex sm:flex-col',
     aboutTwoTitle: 'lg:w-1/2 sm:w-full font-roboto  xs:text-2xl md:text-2xl md:px-24 xs:pt-12 md:pt-16 md:text-center lg:text3xl mb-10 lg:pt-44 lg:text-left ',
     messageFeedImage: 'flex w-1/2 pl-12',
     aboutThree: 'lg:flex lg:flex-row h-[contain] w-[100vw] mb-36 bg-red-300 py-12 sm:flex sm:flex-col',

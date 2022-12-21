@@ -11,6 +11,7 @@ export default function Sidenav() {
   return (
     <div className={styles.sideContainer}>
         <section className={styles.navLinkContainer}>
+            <div className={styles.logo}>[Logo]</div>
             <Sidenavitem title="Profile" src="/avatar.png" width={27} height={20} link="/profile" />
             <Sidenavitem title="Search" src="/personsearch.png" width={27} height={20} link="/search"/>
             <Sidenavitem title="Settings" src="/settingicon.png" width={27} height={20} link="/settings"/>
@@ -56,10 +57,11 @@ export default function Sidenav() {
 }
 
 const styles = {
-    sideContainer: "h-[100vh] pr-5 w-contain bg-[#f4f4ef] static left-0 top-25",
-    navLinkContainer: "mt-10 ",
-    spacer: "w-full h-[50vh]",
-    itemClickable: "flex w-full ml-2 justify-start gap-4 text-l py-3 items-center",
-    navIcon: "flex ml-auto mr-5 flex-end h-25 w-25"
+    sideContainer: "h-[100vh] pr-5 w-[18vw] bg-[#f4f4ef] static left-0 top-25",
+    navLinkContainer: "mt-10 -center",
+    spacer: "w-full h-[40vh]",
+    logo: "mb-5 w-full text-center",
+    itemClickable: "flex w-full justify-center gap-8 px-10 pr-3 text-l items-center",
+    navIcon: "flex justify-center  h-25 w-25"
 
 }

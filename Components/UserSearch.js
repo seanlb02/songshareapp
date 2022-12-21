@@ -43,10 +43,11 @@ const searchUser = function(e) {
             <button onClick={searchUser} className={styles.searchButton}><Image src="/searchIcon.png" width={25} height={25}></Image></button>
         </div>
         {/* {user ? <SearchListItem name={user} link={`/user/${user}`}/> : <div></div>} */}
-        {user == undefined ? <div>No results found, check your spelling.</div> : <div></div>}
-        {user == search &&
+        {user == undefined && <div>No results found, check your spelling.</div>}
+        {user &&
            <SearchListItem name={user} link={`/user/${user}`}/>
         }
+        {user == "" && <div></div>}
     
     </div> 
     )
