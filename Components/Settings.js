@@ -26,7 +26,7 @@ export default function Settings() {
 }
 
 const styles = {
-    pageContainer: "h-screen w-[70vw] flex flex-col ",
+    pageContainer: "h-screen w-[60vw] flex flex-col ",
     pageTitle: "text-xl mt-24 ml-36 mb-12",
     contentContainer: "w-full bg-red-500 items-center justify-center align-center"
 }

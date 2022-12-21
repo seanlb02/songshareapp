@@ -55,7 +55,11 @@ getAccount()
           <div className={styles.infoContainer}>
             <img className={styles.profilePic} src="https://i.pravatar.cc/300" height={100} width={100}/>
             <div className={styles.userName}>{userdata.username}</div>
-            <Image src="/addIcon.png" width={50} height={50}></Image>
+            <Link href="/edit"><Image src="/editprofile.png" width={50} height={50}></Image></Link>
+            <div className={styles.addBranch}>
+              <Image src="/addIcon.png" width={50} height={50}></Image>
+              <div>Add branch...</div>
+            </div>
           </div>
           <div className={styles.bioContainer}>
             <div className={styles.Location}>{userdata.city}, {userdata.country}</div>
@@ -77,7 +81,7 @@ const styles = {
     profilePic: "rounded-full",
     infoContainer: "w-4/5 ml-auto h-contain flex gap-5 items-center content-center mt-12",
     userName: "text-3xl",
-
+    addBranch: "flex items-center gap-1 cursor-pointer",
     bioContainer: "w-4/5 ml-auto flex flex-col h-contain py-6 flex gap-2 ",
     Location: "text-l text-slate-600",
     bio: "text-l"

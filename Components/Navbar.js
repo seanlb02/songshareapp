@@ -13,10 +13,10 @@ export default function Navbar(){
             <div className={styles.links}>
                 <div className={styles.button}><Link href="/about">About</Link></div>
                 <div className={styles.button}>
-                    <div className={styles.loginbutton}><Link href="#login">Log in</Link></div>
+                    <div className={styles.loginbutton}><Link href="/#login">Log in</Link></div>
                 </div>
                 <div className={styles.button}>
-                    <div className={styles.GDbutton}>Sign up</div>
+                    <div className={styles.GDbutton}><Link href="/register">Sign up</Link></div>
                 </div>
             </div>
 

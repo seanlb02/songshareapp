@@ -54,7 +54,7 @@ const searchUser = function(e) {
 }
 
 const styles = {
-    pageContainer: "h-screen w-[70vw] flex flex-col rounded",
+    pageContainer: "h-screen w-[60vw] flex flex-col rounded",
     search: "flex justify-center w-full h-20px border p-5 rounded  gap-3",
     searchInput: "rounded p-2 bg-slate-200"
 }
