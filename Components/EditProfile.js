@@ -9,6 +9,7 @@ import locdata from '../public/locationapi.json'
 export const EditProfile = () => {
 
 
+
         //  .then((countryArray) => countryArray.cities.map(country => cityArray.push(country.cities)))
         //  .then(() => setCities(cityArray))
 
@@ -48,22 +49,39 @@ export const EditProfile = () => {
     
     
 
-
-// }, [])
-
-//  useEffect(() => {
-// getCity();d
-            
-//     }, [countryArray])
-
 const [bio, setBio] = useState();
 const [city, setCity] = useState();
 const [country, setCountry] = useState();
 
+const EditBody = { bio: `${bio}`, country: `${country}`, city: `${city}` }
+
+const saveChanges = function() {
+
+    var token = (JSON.parse(localStorage.getItem("tokenKey").replaceAll("", '')))
+
+    const res = 
+    fetch('http://127.0.0.1:8000/users/current/editprofile/', {
+    method: 'PATCH',
+    headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify(EditBody),
+    })
+    .then((res) => res.json())
+
+    .catch((error) => {
+    console.error('Error:', error);
+    });
+
+}
+
+
+
 const locArray = []
 const [countryArray, setCountryArray] = useState();
 const [cities, setCities] = useState();
-const [majorcities, setMajorcities] = useState([]);
+// const [majorcities, setMajorcities] = useState([]);
 const cityArray = []
 
 const [selectedObj, setSelectedObj] = useState();
@@ -79,8 +97,9 @@ console.log(selection)
 const capitals = selection.map(obj => obj.cities)
 console.log(capitals)
 
-const cityselector = capitals[0]
+var cityselector = capitals[0]
 console.log(cityselector)
+
 
 
   return (
@@ -95,15 +114,17 @@ console.log(cityselector)
                     <input type="text" className={styles.input} name="bio"  placeholder="Type your new bio here" onChange={evt => setBio(evt.target.value)}/>
                     <select type="select" className={styles.input} name="country"  placeholder="Country" onChange={evt => setCountry(evt.target.value)}>
                         {/* {countryArray.map(country => <option>{country.country}</option>)} */}
+                        <option>Select Country</option>
                         {locdata.data.map(item => <option>{item.country}</option>)}
                     </select>
                     <select type="select" className={styles.input} name="city"  placeholder="City" onChange={evt => setCity(evt.target.value)}>
+                        <option>Select city</option>
                         {country != undefined ? cityselector.map(item => <option>{item}</option>) : <option></option>}
                     </select>
 
             </form>          
             <div className={styles.formButtons}>
-                    <div className={styles.Button} ><button>Save Changes</button></div>
+                    <div className={styles.Button} onClick={saveChanges} ><button>Save Changes</button></div>
             </div>
 
         </section>
