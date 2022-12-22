@@ -37,6 +37,9 @@ async function getAccount() {
 
 }
 
+const upload = function(){
+  router.push('/upload')
+}
 
 
 useEffect(() => {
@@ -56,10 +59,7 @@ getAccount()
             <img className={styles.profilePic} src="https://i.pravatar.cc/300" height={100} width={100}/>
             <div className={styles.userName}>{userdata.username}</div>
             <Link href="/edit"><Image src="/editprofile.png" width={50} height={50}></Image></Link>
-            <div className={styles.addBranch}>
-              <Image src="/addIcon.png" width={50} height={50}></Image>
-              <div>Add branch...</div>
-            </div>
+            
           </div>
           <div className={styles.bioContainer}>
             <div className={styles.Location}>{userdata.city}, {userdata.country}</div>
@@ -67,6 +67,10 @@ getAccount()
           </div>
     </section>
     <section className={styles.treePreview}>
+      <div className={styles.addBranch}>
+              <div onClick={upload}><Image src="/addIcon.png" width={50} height={50}></Image></div>
+              <div>Add branch...</div>
+      </div>
       <div className={styles.treeText}>User has not added any branches to their track tree yet.</div>
     </section>
     </div>
@@ -76,15 +80,13 @@ getAccount()
 const styles = {
   profileContainer: "overflow-y-scroll h-screen w-[60vw] flex flex-col ",
     headerContainer: "h-contain  w-100%  border-b-2 border-slate-200",
-    treePreview: " flex h-screen w-full justify-center align-center items-center border-t-2 ",
-    treeText: "text-slate-500",
+    treePreview: " flex flex-col h-screen w-full  items-center border-t-2 ",
+    treeText: "text-slate-500 mt-12",
     profilePic: "rounded-full",
     infoContainer: "w-4/5 ml-auto h-contain flex gap-5 items-center content-center mt-12",
     userName: "text-3xl",
-    addBranch: "flex items-center gap-1 cursor-pointer",
+    addBranch: "flex items-center gap-1 cursor-pointer my-5 mb-5",
     bioContainer: "w-4/5 ml-auto flex flex-col h-contain py-6 flex gap-2 ",
     Location: "text-l text-slate-600",
     bio: "text-l"
-
-
 }

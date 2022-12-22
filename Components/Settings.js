@@ -10,11 +10,12 @@ export default function Settings() {
         
         <div className={styles.pageTitle}>Settings</div>
         <section className={styles.contentContainer}>
-            <SettingsItem text="Edit profile"/>
-            <SettingsItem text=""/>
-            <SettingsItem/>
-            <SettingsItem/>
-            <SettingsItem/>
+            <Link href="/edit"><SettingsItem text="Edit profile"/></Link>
+            <SettingsItem text="Preferences"/>
+            <SettingsItem text="Cookies Settings"/>
+            <SettingsItem text="Privacy Policy"/>
+            <div>___________________________________</div>
+            <SettingsItem  text="Delete Account"/>
 
         </section>
         
@@ -27,6 +28,6 @@ export default function Settings() {
 
 const styles = {
     pageContainer: "h-screen w-[60vw] flex flex-col ",
-    pageTitle: "text-xl mt-24 ml-36 mb-12",
-    contentContainer: "w-full bg-red-500 items-center justify-center align-center"
+    pageTitle: "text-2xl mt-24 ml-24 mb-12",
+    contentContainer: "flex flex-col w-4/5 ml-auto gap-4 "
 }

@@ -104,7 +104,7 @@ const [isLoaded, setIsLoaded] = useState(false)
   return (
     <div className={styles.sideContainer}>
         <div className={styles.search}>
-            <input type="text"  className={styles.searchInput} name="Friendsearch" placeholder="Search..."/>
+            <input type="text"  className={styles.searchInput} name="Friendsearch" placeholder="Search connections..."/>
             <button type="submit" className={styles.searchButton}><Image src="/searchIcon.png" width={25} height={25}></Image></button>
         </div>
        

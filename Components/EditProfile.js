@@ -49,13 +49,15 @@ export const EditProfile = () => {
     
     
 
-const [bio, setBio] = useState();
+const [bio, setBio] = useState("");
 const [city, setCity] = useState();
 const [country, setCountry] = useState();
 
 const EditBody = { bio: `${bio}`, country: `${country}`, city: `${city}` }
-
+ const router = useRouter()
 const saveChanges = function() {
+
+   
 
     var token = (JSON.parse(localStorage.getItem("tokenKey").replaceAll("", '')))
 
@@ -69,6 +71,7 @@ const saveChanges = function() {
     body: JSON.stringify(EditBody),
     })
     .then((res) => res.json())
+    .then(router.push('/profile'))
 
     .catch((error) => {
     console.error('Error:', error);
@@ -109,7 +112,6 @@ console.log(cityselector)
     </section>
     
         <section className={styles.loginForm}>
-            <div className={styles.title}>Fill in the fields below to edit your profile</div>
             <form  className={styles.form}>
                     <input type="text" className={styles.input} name="bio"  placeholder="Type your new bio here" onChange={evt => setBio(evt.target.value)}/>
                     <select type="select" className={styles.input} name="country"  placeholder="Country" onChange={evt => setCountry(evt.target.value)}>
@@ -118,7 +120,7 @@ console.log(cityselector)
                         {locdata.data.map(item => <option>{item.country}</option>)}
                     </select>
                     <select type="select" className={styles.input} name="city"  placeholder="City" onChange={evt => setCity(evt.target.value)}>
-                        <option>Select city</option>
+                        <option>Start typing your city</option>
                         {country != undefined ? cityselector.map(item => <option>{item}</option>) : <option></option>}
                     </select>
 
@@ -140,7 +142,7 @@ const styles = {
     form: "flex gap-4 flex-col w-full pt-10 mt-5 items-center justify-center", 
     regImage: "felx w-1/2",
     input: 'rounded-lg w-full m-2 p-2 bg-[#f4f4ee]', 
-    formButtons: 'flex text-white bg-green-400 flex-col w-1/3 p-2 items-center rounded-md mt-12 mb-36', 
+    formButtons: 'flex text-white bg-green-600 flex-col w-1/3 p-2 items-center rounded-md mt-12 mb-36', 
     title: 'text-2xl px-12 pt-16',
     disclaimer: "text-xs text-slate-600 -mt-4",
 }

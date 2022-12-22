@@ -25,32 +25,7 @@ export default function Sidenav() {
                 </Link>
             </div>
             
-            
-            {/* <Sidenavitem title="Log out" src="/logouticon.png" width={27} height={20} link="" onClick={() => {console.log("cleaned")}}/> */}
-
-
-
-
-            {/* <div className={styles.profileClickable}>
-                <div className={styles.profileButton}>Profile</div>
-                <Image className={styles.profileIcon} src="/avatar.png" width={27} height={20}></Image>
-            </div>
-            <div className={styles.profileClickable}>
-                <div className={styles.profileButton}>Search</div>
-                <Image className={styles.profileIcon} src="/avatar.png" width={27} height={20}></Image>
-            </div>
-            <div className={styles.profileClickable}>
-                <div className={styles.profileButton}>Settings</div>
-                <Image className={styles.profileIcon} src="/avatar.png" width={27} height={20}></Image>
-            </div>
-            <div className={styles.profileClickable}>
-                <div className={styles.profileButton}>Profile</div>
-                <Image className={styles.profileIcon} src="/avatar.png" width={27} height={20}></Image>
-            </div>
-            <div className={styles.profileClickable}>
-                <div className={styles.profileButton}>Help</div>
-                <Image className={styles.profileIcon} src="/avatar.png" width={27} height={20}></Image> */}
-            {/* </div> */}
+      
         </section>
     </div>
   )

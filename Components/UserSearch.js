@@ -55,6 +55,7 @@ const searchUser = function(e) {
 
 const styles = {
     pageContainer: "h-screen w-[60vw] flex flex-col rounded",
-    search: "flex justify-center w-full h-20px border p-5 rounded  gap-3",
-    searchInput: "rounded p-2 bg-slate-200"
+    search: "flex justify-center items-center align-center w-full h-20px border p-5 rounded  gap-3",
+    searchInput: "rounded p-2 bg-slate-200",
+    searchButton: "border border-black rounded-lg h-full px-2"
 }

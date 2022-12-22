@@ -4,14 +4,33 @@ import Image from "next/image";
 
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
+import { data } from "autoprefixer";
 
 export default function UserProfile({name}) {
 
   const followerfetcharray = []
   const followerArray = []
   const [followers, setFollowers] = useState();
+  const [loggedinUser, setloggedinUser] = useState();
   
+// get logged in users name so we can return to their profile
+  async function getLoggedinUsername() {
+
+    var token = (JSON.parse(localStorage.getItem("tokenKey").replaceAll("", '')))
   
+    const res = await fetch('http://127.0.0.1:8000/users/profile/', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+        },
+    })
+    .then(res => res.json())
+    .then((data =>  data.map(item => setloggedinUser(item))))
+    
+
+  
+  }
   
   function getFriends() {
     var token = (JSON.parse(localStorage.getItem("tokenKey").replaceAll("", '')))
@@ -60,6 +79,7 @@ async function getAccount() {
     .then(res => res.json())
     .then((data =>  userFeederArray.push(data)))
     .then((data =>  userFeederArray.map(item => setUserdata(item))))
+
     // .then(console.log(userFeederArray))
     
 
@@ -74,13 +94,30 @@ useEffect(() => {
 
 
   if(!router.isReady) return;
+
 getAccount();
 
 
 
 }, [router.query.user])
 
+useEffect(() => {
 
+
+  
+  if(loggedinUser == undefined)
+  {getLoggedinUsername()}
+
+  if(loggedinUser != undefined){
+  
+      if(userdata.username == loggedinUser.username)
+      { router.push('/profile')}}
+  
+  
+
+  
+
+}, [loggedinUser])
 
 
   // triggers when follow is clicked
@@ -107,6 +144,11 @@ const followUser = async function() {
 const unfollowUser = function () {
   console.log("user unfollowed")
 } 
+
+if(loggedinUser != undefined){
+  
+  if(userdata.username == loggedinUser.username)
+  { router.push('/profile')}}
 
   return (
     <div className={styles.profileContainer}>

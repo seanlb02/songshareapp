@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import messages from '../public/messages.svg'
 import { useRouter } from 'next/router';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -29,7 +31,7 @@ let [email, setEmail] = useState("")
 //     setUsername(email == `{email}`)
 // }
 
-
+const [notify, setNotify] = useState();
 
 const [token, setToken] = useState("")
 let AuthBody = { email: `${email}`, password: `${password}` };
@@ -45,16 +47,22 @@ async function getToken() {
         },
         body: JSON.stringify(AuthBody),
         })
-        .then((res) => res.json())
-        .then((data) => {
-        setToken(data.token)
-        // router.push("/profile"); 
-        })
-        .catch((error) => {
-        console.error('Error:', error);
-        });
+        .then(res => {
+            if (!res.ok){
+                setNotify("Invalid username or password.")
+                // alert("Invalid username or password.")
+            }
+            else {
+                return res.json()
+                .then((data) => {
+                setToken(data.token)
+                // router.push("/profile"); 
+                })}})
+            .catch((error) => {
+                console.error('Error:', error);
+                })
+            };
         
-    }
 
 // add user token to localStorage and push them to their profile
 useEffect(() => {
@@ -118,7 +126,7 @@ useEffect(() => {
             <header id="login"  className={styles.loginHeader}>Playlist your life.
             <br></br>Sign in and get discovering</header>
             <form  className={styles.form}>
-                    
+                    <div>{notify}</div>
                     <input type="text" className={styles.input} name="email"  placeholder="Email Address" onChange={evt => setEmail(evt.target.value)}/>
                     <input type="text" className={styles.input} name="password"  placeholder="Password" onChange={evt => setPassword(evt.target.value)}/>
             </form>          
