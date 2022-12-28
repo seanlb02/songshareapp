@@ -39,8 +39,10 @@ const searchUser = function(e) {
     
     <div className ={styles.pageContainer}>
         <div className={styles.search}>
-            <input type="text" value={search} onChange={(evt) => setSearch(evt.target.value)} className={styles.searchInput} name="Friendsearch" placeholder="Search users..."/>
-            <button onClick={searchUser} className={styles.searchButton}><Image src="/searchIcon.png" width={25} height={25}></Image></button>
+            <form onSubmit={searchUser} className={styles.inputview}>
+                <input type="text" value={search} onChange={(evt) => setSearch(evt.target.value)} className={styles.searchInput} name="Friendsearch" placeholder="Search users..."/>
+                <button type="submit" onClick={searchUser} className={styles.searchButton}><Image src="/searchIcon.png" width={25} height={25}></Image></button>
+            </form>
         </div>
         {/* {user ? <SearchListItem name={user} link={`/user/${user}`}/> : <div></div>} */}
         {user == undefined && <div>No results found, check your spelling.</div>}
@@ -55,7 +57,9 @@ const searchUser = function(e) {
 
 const styles = {
     pageContainer: "h-screen w-[60vw] flex flex-col rounded",
-    search: "flex justify-center items-center align-center w-full h-20px border p-5 rounded  gap-3",
-    searchInput: "rounded p-2 bg-slate-200",
-    searchButton: "border border-black rounded-lg h-full px-2"
+    search: "flex justify-center items-center align-center w-full h-20px border p-5 rounded",
+    searchInput: "rounded p-2 bg-[#f4f4ef]",
+    searchButton: "h-contain px-2",
+    inputview: "flex flex-row bg-[#f4f4ef] rounded-lg mx-6"
+
 }

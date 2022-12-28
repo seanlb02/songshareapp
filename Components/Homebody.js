@@ -38,7 +38,8 @@ let AuthBody = { email: `${email}`, password: `${password}` };
 
 // { email: {"jerryj@gmail.com"}, password: "password666" };
     
-async function getToken() {
+async function getToken(e) {
+    e.preventDefault();
     const res = await
         fetch('http://127.0.0.1:8000/auth/login/', {
         method: 'POST',
@@ -125,16 +126,16 @@ useEffect(() => {
             </div>    
             <header id="login"  className={styles.loginHeader}>Playlist your life.
             <br></br>Sign in and get discovering</header>
-            <form  className={styles.form}>
+            <form onSubmit={getToken} className={styles.form}>
                     <div>{notify}</div>
                     <input type="text" className={styles.input} name="email"  placeholder="Email Address" onChange={evt => setEmail(evt.target.value)}/>
                     <input type="text" className={styles.input} name="password"  placeholder="Password" onChange={evt => setPassword(evt.target.value)}/>
-            </form>          
+                   
             <div className={styles.formButtons}>
-                    <div onClick={getToken} className={styles.Button}><button>Log In</button></div>
+                    <div type="submit" onClick={getToken} className={styles.Button}><button>Log In</button></div>
                     <div className={styles.forgot}><Link  href="/forgotpassword">Forgot your password?</Link></div>
             </div>
-             
+            </form>   
     </div>
     )
 }
@@ -160,5 +161,5 @@ const styles = {
     form: 'flex flex-col w-1/3 pt-10 mt-10  ml-56', 
     loginBox: 'flex w-2/3',
     forgot: 'text-blue-600 text-sm ml-2 mt-6 mb-12 xs:mb-0', 
-    formButtons: 'flex flex-col w-1/3 pt-5 mb-36 ml-56', 
+    formButtons: 'flex flex-col w-2/3 pt-5 mb-36 ', 
 }

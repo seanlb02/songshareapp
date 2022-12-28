@@ -46,13 +46,15 @@ export default function UserProfile({name}) {
     .then(() => followerfetcharray.map(user => followerArray.push(user.followee_id)))
     // .then(((data) =>  {followerArray.push(data.followee_id)}))
     .then(() => {setFollowers(followerArray)})
-    .then(console.log(followers))
+    .then(console.log(followerArray))
+    .then(console.log(userdata.id))
     .then(() => {
-      if(followers.includes(userdata.id)){
-        setFollowingText(styles.followingTextHidden)
-        setFollowButton(styles.followButton)}
-      })
-  }
+      if(followerArray.includes(userdata.id)){
+        setFollowingText(styles.followingText)
+        setFollowButton(styles.followButtonDisappear)
+      }
+  })}
+
 
   
 
@@ -61,6 +63,7 @@ const [followingText, setFollowingText] = useState(styles.HiddenFollowingText)
 
 const [userdata, setUserdata] = useState ([])
 const userFeederArray = []
+
 
 
   const router = useRouter()
@@ -88,7 +91,21 @@ async function getAccount() {
 }
 
 
+// async function getFollowers() {
 
+//   var token = (JSON.parse(localStorage.getItem("tokenKey").replaceAll("", '')))
+//   const res = await fetch(`http://127.0.0.1:8000/connections/following/`, {
+//   method: 'GET',
+//   headers: {
+//       'Content-Type': 'application/json',
+//       'Authorization': `Bearer ${token}`,
+//       },
+    
+//   })
+//   .then(res => res.json())
+//   .then((data =>  data.map(connection => )))
+
+// }
   
 useEffect(() => {
 
@@ -114,10 +131,13 @@ useEffect(() => {
       { router.push('/profile')}}
   
   
-
-  
-
 }, [loggedinUser])
+
+useEffect(() => {
+
+getFriends();
+
+}, [userdata])
 
 
   // triggers when follow is clicked
@@ -133,8 +153,8 @@ const followUser = async function() {
       body: JSON.stringify(body),
   })
   .then(res => res.json())
-  .then((data =>  userFeederArray.push(data)))
-  .then((data =>  userFeederArray.map(item => setUserdata(item))))
+  // .then((data =>  userFeederArray.push(data)))
+  // .then((data =>  userFeederArray.map(item => setUserdata(item))))
   .then(() => setFollowingText(styles.followingText))
   .then(() => setFollowButton(styles.followButtonDisappear))
 
@@ -142,7 +162,8 @@ const followUser = async function() {
 
 // triggers when unfollow is clicked
 const unfollowUser = function () {
-  console.log("user unfollowed")
+  setFollowingText(styles.HiddenFollowingText)
+  setFollowButton(styles.followButton)
 } 
 
 if(loggedinUser != undefined){
@@ -157,7 +178,7 @@ if(loggedinUser != undefined){
             <img className={styles.profilePic} src="https://i.pravatar.cc/300" height={100} width={100}/>
             <div className={styles.userName}>{userdata.username}</div>
             <div className={followButton} onClick={followUser}>follow</div>
-            <div className={followingText} onClick={unfollowUser}>following</div>
+            <div className={followingText} onClick={unfollowUser}>unfollow</div>
  
           </div>
           <div className={styles.bioContainer}>
@@ -180,7 +201,7 @@ const styles = {
     profilePic: "rounded-full",
     infoContainer: "w-4/5 ml-auto h-contain flex gap-5 items-center content-center mt-12",
     userName: "text-3xl",
-    followingText: "text-white bg-green-400 ml-2 p-2 px-5 rounded-md",
+    followingText: "text-black bg-white border-2 border-black ml-2 p-2 px-5 rounded-md",
     HiddenFollowingText: "hidden",
     followButtonDisappear: "hidden",
     followButton: "bg-black text-white p-2 rounded-md px-5",

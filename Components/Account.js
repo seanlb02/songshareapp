@@ -11,7 +11,7 @@ export default function Account() {
 const router = useRouter();
 
 const [userdata, setUserdata] = useState ([])
-
+const datafeeder = []
 const [username, setUsername] = useState()
 const [bio, setBio] = useState()
 const [city, setCity] = useState()
@@ -30,6 +30,7 @@ async function getAccount() {
     
   })
   .then(res => res.json())
+
   .then((data =>  data.map(item => setUserdata(item))))
 
   .then(console.log(router.query))

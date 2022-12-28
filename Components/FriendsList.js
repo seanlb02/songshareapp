@@ -18,7 +18,7 @@ export default function FriendsList() {
 const [followers, setFollowers] = useState()
 let followerArray = []
 let nameArray = []
-const [username, setUsername] = useState()
+const [username, setUsername] = useState([])
 const [isLoaded, setIsLoaded] = useState(false)
 
  const getFollowerIds = function () {
@@ -64,25 +64,48 @@ const [isLoaded, setIsLoaded] = useState(false)
       
      
 
-     const getFollowerNames = function () {
+     const getFollowerNames = async function () {
       var token = (JSON.parse(localStorage.getItem("tokenKey").replaceAll("", '')))
-
-       followerArray.map(follower => fetch(`http://127.0.0.1:8000/users/${follower}/`, {
+      const userFriends = [...username]
+        await Promise.all(
+        followers.map((follower) => 
+        fetch(`http://127.0.0.1:8000/users/${follower}/`, 
+        {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
             },
-        })
-        .then(res => res.json())
-        .then((data => nameArray.push(data.name)))
+          }
+          ).then(res => res.json())
+        ))
+        .then(data => data.map(users => nameArray.push(users.username)))
         .then(() => setUsername(nameArray))
+
+        }
+        
+          
+        //  .then(data => nameArray.push(data.username))
+        //  .then(console.log(nameArray))
+           
+      
+          
+
+
+        
+        // nameArray.push(responses)
+        // console.log(nameArray)
         
         
 
-        // .then((data =>  data.map(item => setUsername(item.name))))
-      )
-      }
+     
+
+        // .then(res => res.json())
+        // .then((data) => {return data.name})
+        // })
+        // )
+        // console.log(responses)
+      
 // this runs first API fetch onMount which sets 'followers' state 
   useEffect(() => {
    
@@ -94,31 +117,61 @@ const [isLoaded, setIsLoaded] = useState(false)
 // execution will fire due to the 'followers' dependancey change?
   useEffect(() => {
       
-      if(followers != undefined ){
+      if(followers == undefined ){
+        console.log('no followers');
+        // getFollowerNames()
       
-        getFollowerNames();
+      }
+      if(followers != undefined){
+       
+        getFollowerNames()
+        
+
       }
     }, [followers])
 
 
+    const rendernames = function() {
+      if (username.length > 0){
+       return username.map(user => (<FriendListItem key={user} UserName={user} link={`/user/${user}`}/>))}
+       
+      else { return <div>[Loading animation]</div>}
+      
+      }
+
+
+    useEffect(() => {
+      rendernames();
+    
+  }, [username])
+
   return (
     <div className={styles.sideContainer}>
         <div className={styles.search}>
-            <input type="text"  className={styles.searchInput} name="Friendsearch" placeholder="Search connections..."/>
-            <button type="submit" className={styles.searchButton}><Image src="/searchIcon.png" width={25} height={25}></Image></button>
+            <div className={styles.inputview}>
+              <input type="text"  className={styles.searchInput} name="Friendsearch" placeholder="Search connections..."/>
+              <button type="submit" className={styles.searchButton}><Image src="/searchIcon.png" width={25} height={25}></Image></button>
+            </div>
         </div>
+
+        {rendernames()}
        
         {/* {isLoaded == true ? username && username.map(user => (<FriendListItem key={user} UserName={user} link = {`/user/${user}`}/>)) : <div>loading</div>} */}
-        {followers !=undefined ? followers.map(user => (<FriendListItem key={user} UserName={user} link={`/user/${user}`}/>)) : <div>loading</div>}
+        {/* {followers != undefined && followers.map(user => (<FriendListItem key={user} UserName={user} link={`/user/${user}`}/>))} */}
+        {/* {username != undefined ? username.map(user => (<FriendListItem key={user} UserName={user} link={`/user/${user}`}/>)) : <div>no names</div>} */}
+
+        {/* {isLoaded == true ? <div>hello</div> : <div>loading</div>} */}
+
     </div>
   )
 }
 
 const styles = {
+
     sideContainer: "overflow-y-scroll h-[100vh] mb-96 mr-2 w-[25vw] bg-white border-slate-200 border-l-2 static right-0 top-25",
-    search: "flex w-contain py-6 justify-center  items-center align-center border-b",
+    search: "flex w-contain py-6 h-contain justify-center  items-center align-center border-b",
     searchButton: "min-w-28 min-h-28 pr-2",
     searchInput: "w-full mx-2 rounded-lg p-2 bg-[#f4f4ef] h-10 ",
-
+    inputview: "flex flex-row bg-[#f4f4ef] rounded-lg mx-6"
 
 }
