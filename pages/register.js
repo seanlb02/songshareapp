@@ -12,7 +12,7 @@ import codes from '../public/CountryCodes.json'
 
 
 
-export default function register() {
+export default function Register() {
 
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
@@ -70,7 +70,7 @@ const registerUser = async function() {
                     <div className={styles.disclaimer}>(users must be over 13 years)</div>
                     <div className={styles.numberContainer}>
                     <select  className={styles.code} name="countrycode"  onChange={evt => setCountrycode(evt.target.value)}>
-                          {codes.map(code => <option>{code.dial_code}</option>)}
+                          {codes.map((code,index) => <option key={index}>{code.dial_code}</option>)}
                     </select>
 
                       <input type="text" className={styles.phoneinput} name="phonenumber"  placeholder="Phone number" onChange={evt => setPhonenumber(`${countrycode}` + evt.target.value)}/>
